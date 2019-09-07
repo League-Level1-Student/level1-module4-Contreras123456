@@ -54,14 +54,14 @@ frame.setVisible(true);
 		// 2. Give your frame a title
 frame.setTitle("Jeopardy");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
-JPanel panel = createHeader("java");
+JPanel panel = createHeader("Jeopardy");
 
 		// 4. Add the header component to the quizPanel
 quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
-quizPanel.add(frame);
+frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
- firstButton=createButton("$ 100");
+ firstButton=createButton("$200");
 		// 7. Add the firstButton to the quizPanel
 quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
@@ -69,7 +69,7 @@ quizPanel.add(firstButton);
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-secondButton = createButton("$ 100");
+secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
 quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
@@ -78,7 +78,12 @@ secondButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-		
+		thirdButton = createButton("$600");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
 		 /*
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
@@ -101,19 +106,18 @@ button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
 buttonCount++;
 		// Return your new button instead of the temporary button
-
-		return new JButton("button");
+		return button;
+		
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-	
-
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 if (buttonPressed==firstButton) {
-	askQuestion("What is the best meme right now", "Creeper Aw Man", 200);
+	askQuestion("What is the best meme right now", "creeper aw man", 200);
 }
 
 			// Call the askQuestion() method
@@ -121,11 +125,14 @@ if (buttonPressed==firstButton) {
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
 
 		// If the buttonPressed was the secondButton
-
+if(buttonPressed==secondButton) {
+	askQuestion("What's 9+10", "19" , 400);
+	
+}
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-
+buttonPressed.setText("");
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
@@ -138,13 +145,17 @@ if (buttonPressed==firstButton) {
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
 		sound.stop();
 		// If the answer is correct
-if (correctAnswer=="Creeper Aw Man") {
+if (correctAnswer=="creeper aw man") {
 	score++;
+JOptionPane.showMessageDialog(null, "You are correct");
+}
+else {
+	score--;
+	JOptionPane.showMessageDialog(null, "You are incorrect. The answer is Creeper Aw Man");
 }
 			// Increase the score by the prizeMoney
 
 			// Pop up a message to tell the user they were correct
-
 		// Otherwise
 
 			// Decrement the score by the prizeMoney
@@ -152,7 +163,7 @@ if (correctAnswer=="Creeper Aw Man") {
 			// Pop up a message to tell the user they were wrong and give them the correct answer
 
 		// Call the updateScore() method
-
+updateScore();
 	}
 
 	public void playJeopardyTheme() {
