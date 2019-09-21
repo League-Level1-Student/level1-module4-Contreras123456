@@ -14,7 +14,7 @@ public class TypingTutor implements KeyListener {
 	static JFrame frame = new JFrame();
 	static JLabel label = new JLabel();
 	static char currentLetter;
-	JPanel panel = new JPanel();
+	static JPanel panel = new JPanel();
 	
 public static void main(String[] args) {
 	currentLetter = generateRandomLetter();
@@ -22,7 +22,8 @@ label.setText(currentLetter+"");
 label.setFont(label.getFont().deriveFont(28.0f));
 label.setHorizontalAlignment(JLabel.CENTER);
 frame.setVisible(true);
-frame.add(label);
+panel.add(label);
+frame.add(panel);
 frame.pack();
 TypingTutor typingtutor = new TypingTutor();
 typingtutor.KeyListner();
