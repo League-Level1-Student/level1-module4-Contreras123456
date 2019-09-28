@@ -24,16 +24,16 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
 
     JFrame frame = new JFrame();
 
-    int frameWidth = 500;
-    int frameHeight = 500;
+    int frameWidth = 680;
+    int frameHeight = 382;
 
     FortuneTeller() throws Exception {
    	 // 1. Choose an image for your fortune teller and put it in your default package
-   	 fortuneTellerImage = ImageIO.read(getClass().getResource("fortune teller.png"));
+   	 fortuneTellerImage = ImageIO.read(getClass().getResource("faceswap.jpg"));
    	 // 2. Adjust the frameWidth and frameHeight variables to fit your image nicely (doesn’t need a new line of code)
      // 3. Complete the begin() method in the FortuneTellerRunner class
  	 // 4. add a mouse listener to the frame
-
+frame.addMouseListener(this);
     }
 
 
@@ -41,23 +41,23 @@ public class FortuneTeller extends JPanel implements Runnable, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
    	 int mouseX = e.getX();
-   	 int mouseY = e.getY();
+   	int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-
+System.out.println(mouseX);
+System.out.println(mouseY);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 0;
-   	 int secretLocationY = 0;
+   	 int secretLocationX = 601;
+   	 int secretLocationY = 293;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-
+JOptionPane.showInputDialog("Ask me a question");
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
-   		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
-   		 // 10. Play the sound
-
+   		 AudioClip sound = JApplet.newAudioClip(getClass().getResource("creepy-noise.wav"));
+sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
-
+pause(60);
    		 // 12. Insert your completed Magic 8 ball code here
 
    	 }
