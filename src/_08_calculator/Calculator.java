@@ -19,6 +19,10 @@ public class Calculator implements ActionListener {
 	JButton button4 = new JButton();
 	JTextField textfield = new JTextField(10);
 	JTextField textfield2 = new JTextField(10);
+	int sum = 0;
+	int sum2 = 0;
+	int sum3 = 0;
+	int sum4 = 0;
 	void RunnerSetup(){
 		frame.setVisible(true);
 		frame.add(panel);
@@ -39,33 +43,40 @@ public class Calculator implements ActionListener {
 		button4.addActionListener(this);
 		frame.pack();
 	}
-	void add(){
-	int add = 1;
+	void add(int num1, int num2){
+	sum = num1+num2;
 	}
-	void multiply(){
-	int multiply = 1;	
+	void multiply(int num1, int num2){
+	 sum2 = num1*num2;
 	}
-	void subtract(){
-		int subtract = 1;
+	void subtract(int num1, int num2){
+	sum3 = num1-num2;
 	}
-	void divide(){
-		int divide = 1;
+	void divide(int num1, int num2){
+	sum4 = num1/num2;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		String text = textfield.getText();
+		String text2 = textfield2.getText();
+		int communism = Integer.parseInt(text);
+		int memes = Integer.parseInt(text2);
 		if (e.getSource()==button) {
-			add();
-			label.setText("1");
+			add(communism, memes);
+			label.setText(Integer.toString(sum));
 		}
 		else if (e.getSource()==button2) {
-			multiply();
+			multiply(communism,memes);
+			label.setText(Integer.toString(sum2));
 		}
 		else if (e.getSource()==button3) {
-			subtract();
+			subtract(communism, memes);
+			label.setText(Integer.toString(sum3));
 		}
 		else if (e.getSource()==button4) {
-			divide();
+			divide(communism, memes);
+			label.setText(Integer.toString(sum4));
 		}
 	}
 }
