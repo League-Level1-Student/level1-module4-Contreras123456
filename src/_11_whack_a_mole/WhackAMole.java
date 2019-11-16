@@ -1,10 +1,12 @@
 package _11_whack_a_mole;
 
+import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Random;
 
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,8 +16,9 @@ import javax.swing.JPanel;
 public class WhackAMole implements ActionListener {
 	static JFrame frame;
 	static JPanel panel;
-	
 	static Date date;
+	int misses = 0;
+	int score = 0;
 
 	public static void main(String[] args) {
 		date = new Date();
@@ -48,15 +51,33 @@ public class WhackAMole implements ActionListener {
 	}
 
 	int counter = 0;
-
+	 AudioClip sound = JApplet.newAudioClip(getClass().getResource("sound.wav"));
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		JButton buttonclicked = (JButton) e.getSource();
 		if (buttonclicked.getText().equals("mole!")) {
 			counter++;
+			sound.play();
 		} else {
 			speak("you missed");
+					misses++;
+		}
+		if (misses==1) {
+			speak("You suck");
+		}
+		else if (misses==2) {
+			speak("hahahahahaha");
+		}
+		else if (misses==3) {
+			speak("you're stupid");
+		}
+		else if (misses==4) {
+			speak("You won't get free diamonds in minecraft");
+		}
+		else if (misses==5) {
+			speak("You lost the game.");
+			endGame(date, counter);
 		}
 		frame.dispose();
 		WhackAMole whackamole2 = new WhackAMole();
