@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SlotMachine implements ActionListener {
@@ -23,6 +24,7 @@ JLabel label3 = new JLabel();
 static String picture = "cherry.jpg";
 static String picture2 = "seven.jpg";
 static String picture3 = "bar.jpg";
+int wincounter = 0;
 
 
 	
@@ -76,7 +78,6 @@ static String randomPic() {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("hello");
 		String action = randomPic();
 		String lego = randomPic();
 		String wiiremote = randomPic();
@@ -95,5 +96,9 @@ static String randomPic() {
 		panel.add(label2);
 		panel.add(label3);
 		frame.pack();
+		if (action.equals(lego)&&lego.equals(wiiremote)) {
+			JOptionPane.showMessageDialog(null, "YOU WIN!");
+			System.out.println(wincounter++);
+		}
 	}
 }
