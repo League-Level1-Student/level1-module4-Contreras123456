@@ -45,7 +45,7 @@ public static void main(String[] args) {
 				JOptionPane.showMessageDialog(null, "Correct");
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Incorrect");
+				JOptionPane.showMessageDialog(null, "Incorrect! The correct answer is all of them");
 			}
 		}
 		else if (e.getSource()==button2) {
